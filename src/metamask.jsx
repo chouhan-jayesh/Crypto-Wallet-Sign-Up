@@ -6,6 +6,7 @@ const MetaMask = () => {
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
 
+  // Creating the main Function
   const connectWallet = () => {
     if (window.ethereum) {
       window.ethereum
