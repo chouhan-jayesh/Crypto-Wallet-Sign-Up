@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 
 const MetaMask = () => {
+  // initialising state variables
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
 
-  // Creating the main Function
+  // Creating and adding logic of the connectwallet Function
   const connectWallet = () => {
     if (window.ethereum) {
       window.ethereum
@@ -22,6 +23,7 @@ const MetaMask = () => {
     }
   };
 
+  // disconnecting the wallet function
   const disconnectWallet = () => {
     // Clear locally stored wallet information or update state variables
     localStorage.clear();
@@ -34,6 +36,7 @@ const MetaMask = () => {
     getUserBalance(accountName);
   };
 
+  // getting the users balance function
   const getUserBalance = (accountAddress) => {
     window.ethereum
       .request({
@@ -53,8 +56,6 @@ const MetaMask = () => {
   };
 
   useEffect(() => {
-    // Perform any additional setup or cleanup on component mount/unmount
-
     return () => {
       // Cleanup or reset state variables when the component unmounts
       setErrorMessage(null);
